@@ -13,11 +13,13 @@ const count = ref(0)
 
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
+    <p> 
       Edit
       <code>components/HelloWorld.vue</code> to test HMR
     </p>
   </div>
+
+  <h2 class="text-green-900">HALO</h2>
 
   <p>
     Check out
@@ -25,7 +27,7 @@ const count = ref(0)
       >create-vue</a
     >, the official Vue + Vite starter
   </p>
-  <p>
+  <p class="bg-red-500">
     Install
     <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
     in your IDE for a better DX
