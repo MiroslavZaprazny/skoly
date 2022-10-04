@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Collage;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +16,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Collage::factory()->create([
+          'name' => 'FEI STU',
+            'description' => 'Poslaním Fakulty elektrotechniky a informatiky, jednej z najstarších
+                technických fakúlt na Slovensku s bohatou vedeckou a výskumnou činnosťou, 
+                je poskytovanie kvalitného vzdelávania na báze slobodného vedeckého bádania
+                a tvorivej výskumnej práce.',
+        ]);
     }
 }
