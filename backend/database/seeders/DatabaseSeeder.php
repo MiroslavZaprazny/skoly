@@ -32,6 +32,19 @@ class DatabaseSeeder extends Seeder
                 a tvorivej výskumnej práce.',
         ]);
 
+        Collage::factory()->create([
+            'name' => 'FIIT STU',
+            'description' => 'Fakulta informatiky a informačných technológií STU v Bratislave
+                Na Slovensku v súčasnosti chýba až 20 000 informatikov, v Európe dokonca až 900 000! Zaplň medzeru na trhu.',
+        ]);
+
+        Collage::factory()->create([
+            'name' => 'MTF STU',
+            'description' => 'Materiálovotechnologická fakulta STU v Bratislave so sídlom v Trnave chce byť, v 
+                kontexte s víziou STU, výskumne orientovanou, celoslovensky a medzinárodne uznávanou a priemyslom akceptovanou fakultou. 
+                Chce poskytovať špičkové, medzinárodne porovnateľné vzdelávanie a rozvíjať moderné trendy vo výskume a priemyselnej výrobe.',
+        ]);
+
         Rating::factory()->create([
             'user_id' => $user->id,
             'collage_id' => $collage->id,

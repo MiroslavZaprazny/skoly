@@ -19,7 +19,8 @@ class CollagesResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'founded_at' => $this->founded_at,
-            'ratings' => RatingsResource::collection($this->whenLoaded('ratings'))
+            'average_rating' => RatingsResource::collection($this->whenLoaded('ratings'))->avg('rating'),
+            'rating_count' => RatingsResource::collection($this->whenLoaded('ratings'))->count()
         ];
     }
 }

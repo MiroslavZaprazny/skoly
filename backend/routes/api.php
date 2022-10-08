@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/collages', [CollageController::class, 'index']);
+Route::post('/collages', [CollageController::class, 'search']);

@@ -18,14 +18,8 @@ class CollagesTest extends TestCase
                     'name',
                     'description',
                     'founded_at',
-                    'ratings' => [
-                        '*' => [
-                            'id',
-                            'user_id',
-                            'rating',
-                            'body'
-                        ]
-                    ]
+                    'average_rating',
+                    'rating_count',
                 ]
             ]
         ]);

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class CollageController extends Controller
 {
-    public function index(Request $request)
+    public function search(Request $request)
     {
         return CollagesResource::collection(Collage::with('ratings')->where(function ($query) use ($request) {
             $query->where('name', 'like', '%' . $request->input('search') . '%')
