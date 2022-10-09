@@ -2,10 +2,10 @@
   <div class="bg-slate-700 h-screen">
   <h1 class="text-emerald-600">Homepage</h1>
     <div>
-        <input type="text" placeholder="vyhladaj skoly" v-model="search">
+        <input type="text" placeholder="vyhladaj skoly" v-model="search" @keydown="searchSchool">
     </div>
     <div>
-      <div v-for="(school, index) in filteredSchools" :key="index">
+      <div v-for="(school, index) in schools" :key="index">
         <p>{{ school.name }}</p>
       </div>
     </div>
@@ -26,25 +26,19 @@ data() {
   }
 },
 
-computed: {
-  filteredSchools(){
-    if (this.search.trim().length > 0) {
-      return this.schools.filter((school) => school.name.toLowerCase().includes
-      (this.search.trim().toLowerCase()))
-    }
-    return this.schools
-  }
-},
-
 methods: {
   async searchSchool() {
-    axios.post('http://127.0.0.1:8000/api/collages')
-    .then((response) => {
-      this.schools = response.data.data
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+    if(this.search.length >= 2){
+        axios.post('http://127.0.0.1:8000/api/collages', {
+          search: this.search
+        })
+        .then((response) => {
+          this.schools = response.data.data
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    }
   },
 },
 
