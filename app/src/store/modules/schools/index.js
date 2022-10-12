@@ -1,20 +1,38 @@
-import mutations from './mutations.js';
-import getters from './getters.js';
-import actions from './actions';
+import axios from 'axios';
+// import mutations from './mutations.js';
+// import getters from './getters.js';
+// import actions from './actions';
 
 export default {
-  namespaced: true,
+  // namespaced: true,
   state() {
     return {
-      schools: [
-        {
-          id:1,
-          name: 'stu'
-        }
-      ]
+      filteredSchools: [],
     }
   },
-  mutations: mutations,
-  getters: getters,
-  actions: actions
+  mutations: {
+    searchSchools(state, filteredSchools) {
+      state.filteredSchools = filteredSchools
+    },
+  },
+  getters: {
+    schools(state) {
+      return state.filteredSchools;
+    },
+  },
+  actions: {
+    async searchSchools({commit}, payload) {
+      if(payload.length >= 2){
+          axios.post('http://127.0.0.1:8000/api/collages', {
+            search: payload
+          })
+          .then((response) => {
+            commit('searchSchools', response.data.data)
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+      }
+    },
+  }
 }
