@@ -22,7 +22,6 @@ export default {
   },
   actions: {
     async searchSchools({commit}, payload) {
-      if(payload.length >= 2){
           axios.post('http://127.0.0.1:8000/api/collages', {
             search: payload
           })
@@ -32,7 +31,6 @@ export default {
           .catch((error) => {
             console.log(error);
           })
-      }
     },
   }
 }

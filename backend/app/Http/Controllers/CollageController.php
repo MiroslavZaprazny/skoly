@@ -11,10 +11,12 @@ class CollageController extends Controller
 {
     public function search(Request $request)
     {
-        return CollagesResource::collection(Collage::with('ratings')->where(function ($query) use ($request) {
-            $query->where('name', 'like', '%' . $request->input('search') . '%')
-                ->orWhere('description', 'like', '%' . $request->input('search') . '%');
-        })->get());
+        if (strlen($request->input('search')) >= 2) {
+            return CollagesResource::collection(Collage::with('ratings')->where(function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->input('search') . '%')
+                    ->orWhere('description', 'like', '%' . $request->input('search') . '%');
+            })->get());
+        }
     }
 
     public function show(Collage $collage)

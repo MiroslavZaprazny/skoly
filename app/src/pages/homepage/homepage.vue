@@ -4,7 +4,7 @@
     <div>
       <searchbar></searchbar>
     </div>
-    <div class="flex" v-if="schools.length > 0">
+    <div class="flex" v-if="schools">
       <school-item v-for="(school, index) in schools" :key="index" :name="school.name"/>
     </div>
     <h1 v-else>Zadajte nejaku skolu do vyhladavania</h1>
