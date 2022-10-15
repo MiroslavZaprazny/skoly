@@ -12,7 +12,7 @@
 export default {
   props: {
     name: String,
-    rating: String,
+    rating: Number,
     description: String,
   }
 }

@@ -6,6 +6,12 @@ const routes = [
     name: "homepage",
     component: () => import("../pages/homepage/homepage.vue"),
   },
+  {
+    path: "/api/collage/:id",
+    name: 'SchoolDetail',
+    component: () => import("../pages/schoolpage/schoolpage.vue"),
+    props: true
+  }
 ];
 
 

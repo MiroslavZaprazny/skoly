@@ -35,7 +35,6 @@ export default {
           .then((response) => {
             commit('searchSchools', response.data.data)
             commit('setSearchInput', payload)
-            console.log(response.data.data);
           })
           .catch((error) => {
             console.log(error);
