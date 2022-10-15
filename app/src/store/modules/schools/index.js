@@ -8,17 +8,24 @@ export default {
   state() {
     return {
       filteredSchools: [],
+      searchInput: ''
     }
   },
   mutations: {
     searchSchools(state, filteredSchools) {
       state.filteredSchools = filteredSchools
     },
+    setSearchInput(state, payload){
+      state.searchInput = payload
+    }
   },
   getters: {
     schools(state) {
       return state.filteredSchools;
     },
+    searchInput(state){
+      return state.searchInput
+    }
   },
   actions: {
     async searchSchools({commit}, payload) {
@@ -27,6 +34,7 @@ export default {
           })
           .then((response) => {
             commit('searchSchools', response.data.data)
+            commit('setSearchInput', payload)
             console.log(response.data.data);
           })
           .catch((error) => {
