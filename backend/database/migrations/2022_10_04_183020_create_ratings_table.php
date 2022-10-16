@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('collage_id')->constrained()->cascadeOnDelete();
+            $table->string('user_ip')->nullable();
             $table->integer('rating');
             $table->string('body');
             $table->timestamps();

@@ -56,6 +56,7 @@ class DatabaseSeeder extends Seeder
 
         Rating::factory()->create([
             'user_id' => $user->id,
+            'user_ip' => '123',
             'collage_id' => $collage->id,
             'rating' => '3',
             'body' => 'Nic moc akoze'

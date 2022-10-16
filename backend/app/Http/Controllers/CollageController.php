@@ -15,7 +15,7 @@ class CollageController extends Controller
             return CollagesResource::collection(Collage::with('ratings')->where(function ($query) use ($request) {
                 $query->where('name', 'like', '%' . $request->input('search') . '%')
                     ->orWhere('description', 'like', '%' . $request->input('search') . '%');
-            })->get());
+          })->limit(8)->get());
         }
     }
 

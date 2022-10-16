@@ -26,15 +26,22 @@ class StoreRatingRequest extends FormRequest
         return [
             'collage_id' => 'required',
             'user_id' => 'nullable|unique:ratings,user_id,NULL,id,collage_id,' . $this->input('collage_id'),
+            'user_ip' => 'unique:ratings,user_ip,NULL,id,collage_id,' . $this->input('collage_id'),
             'rating' => 'required',
             'body' => 'required',
         ];
+    }
+
+    public function prepareForValidation()
+    {
+        $this->merge(['user_ip' => $this->ip()]);
     }
 
     public function messages()
     {
         return [
             'user_id.unique' => 'Už ste raz ohodnotili túto školu',
+            'user_ip.unique' => 'Už ste raz ohodnotili túto školu',
             'required' => 'Toto pole je povinné'
         ];
     }
