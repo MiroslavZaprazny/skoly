@@ -45,6 +45,15 @@ class DatabaseSeeder extends Seeder
                 Chce poskytovať špičkové, medzinárodne porovnateľné vzdelávanie a rozvíjať moderné trendy vo výskume a priemyselnej výrobe.',
         ]);
 
+        foreach (range(1, 300) as $test) {
+            Collage::factory()->create([
+                'name' => 'MTF STU',
+                'description' => 'Materiálovotechnologická fakulta STU v Bratislave so sídlom v Trnave chce byť, v 
+                kontexte s víziou STU, výskumne orientovanou, celoslovensky a medzinárodne uznávanou a priemyslom akceptovanou fakultou. 
+                Chce poskytovať špičkové, medzinárodne porovnateľné vzdelávanie a rozvíjať moderné trendy vo výskume a priemyselnej výrobe.',
+            ]);
+        }
+
         Rating::factory()->create([
             'user_id' => $user->id,
             'collage_id' => $collage->id,
