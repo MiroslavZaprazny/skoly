@@ -29,12 +29,13 @@ export default {
   },
   actions: {
     async searchSchools({commit}, payload) {
+          commit('setSearchInput', payload)
+          
           axios.post('http://127.0.0.1:8000/api/collages', {
             search: payload
           })
           .then((response) => {
             commit('searchSchools', response.data.data)
-            commit('setSearchInput', payload)
           })
           .catch((error) => {
             console.log(error);
