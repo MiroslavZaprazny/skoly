@@ -10,7 +10,7 @@ import axios from 'axios'
 
 export default {
   props: {
-    id: Number,
+    id: String,
   },
   data() {
     return {
