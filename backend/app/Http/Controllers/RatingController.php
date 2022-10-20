@@ -11,6 +11,13 @@ class RatingController extends Controller
     {
         Rating::create($request->validated());
 
-        return response()->json('Hodnotenie bolo úspšene vytvorené');
+        return response()->json('Hodnotenie bolo úspšene vytvorené', 201);
+    }
+
+    public function destroy(Rating $rating)
+    {
+        $rating->delete();
+
+        return response()->json('Hodnotenie bolo úspšene odstránené', 201);
     }
 }
