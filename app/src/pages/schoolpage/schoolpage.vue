@@ -1,11 +1,14 @@
 <template>
   <div>
     <div class="border-b border-purple-primary mx-10 mb-20">
-      <p>{{schoolItem.name}}</p>
-      <p>{{schoolItem.ratings[0].body}}</p>
+      <p>{{ schoolItem.name }}</p>
+      <p>Pocet reviews ({{ schoolItem.ratings.length }})</p>
     </div>
     <div class="mx-10">
       <z-review-form></z-review-form>
+    </div>
+    <div class="mx-10">
+      <p>{{ schoolItem.ratings[0].body }}</p>
     </div>
   </div>
 </template>
