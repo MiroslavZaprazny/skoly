@@ -24,4 +24,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/collages', [CollageController::class, 'search']);
 Route::get('/collage/{collage}', [CollageController::class, 'show']);
 Route::post('/rating', [RatingController::class, 'store']);
-Route::delete('/rating/{rating}', [RatingController::class, 'destroy']);
+Route::delete('/rating/{rating}/{user?}', [RatingController::class, 'destroy'])->where('user', '.*');

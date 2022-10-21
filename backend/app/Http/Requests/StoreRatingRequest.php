@@ -40,8 +40,7 @@ class StoreRatingRequest extends FormRequest
     public function messages()
     {
         return [
-            'user_id.unique' => 'Už ste raz ohodnotili túto školu',
-            'user_ip.unique' => 'Už ste raz ohodnotili túto školu',
+            'unique' => 'Už ste raz ohodnotili túto školu',
             'required' => 'Toto pole je povinné'
         ];
     }
