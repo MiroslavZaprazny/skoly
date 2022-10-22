@@ -26,3 +26,4 @@ Route::get('/collage/{collage}', [CollageController::class, 'show']);
 
 Route::post('/rating', [RatingController::class, 'store']);
 Route::delete('/rating/{rating}/{user?}', [RatingController::class, 'destroy'])->where('user', '.*');
+Route::get('/rating/{rating}', [RatingController::class, 'show']);

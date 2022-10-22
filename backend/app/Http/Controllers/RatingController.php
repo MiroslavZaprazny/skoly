@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Rating;
 use App\Http\Requests\StoreRatingRequest;
+use App\Http\Resources\ShowRatingResource;
 use Illuminate\Http\Request;
 
 class RatingController extends Controller
 {
+    public function show(Rating $rating)
+    {
+        return new ShowRatingResource($rating->load(['user', 'comments']));
+    }
+
     public function store(StoreRatingRequest $request)
     {
         Rating::create($request->validated());
