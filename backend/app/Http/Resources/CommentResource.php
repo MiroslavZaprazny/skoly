@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class RatingsResource extends JsonResource
+class CommentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,8 @@ class RatingsResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'rating' => $this->rating,
             'body' => $this->body,
-            'num_of_comments' => CommentResource::collection($this->whenLoaded('comments'))->count(),
-            'user' => new UserResource($this->whenLoaded('user')),
-            'comments' => new CommentResource($this->whenLoaded('comments')[0]),
+            'user' => new UserResource($this->whenLoaded('user'))
         ];
     }
 }

@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Collage;
+use App\Models\Comment;
 use App\Models\Rating;
 use Illuminate\Database\Seeder;
 
@@ -60,6 +61,13 @@ class DatabaseSeeder extends Seeder
             'collage_id' => $collage->id,
             'rating' => '3',
             'body' => 'Nic moc akoze'
+        ]);
+
+        Comment::factory()->create([
+            'user_id' => $user->id,
+            'collage_id' => $collage->id,
+            'rating_id' => 1,
+            'body' => 'davam ti za pravdu sefe'
         ]);
     }
 }

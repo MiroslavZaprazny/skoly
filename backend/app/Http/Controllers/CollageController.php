@@ -15,12 +15,16 @@ class CollageController extends Controller
             return CollagesResource::collection(Collage::with('ratings')->where(function ($query) use ($request) {
                 $query->where('name', 'like', '%' . $request->input('search') . '%')
                     ->orWhere('description', 'like', '%' . $request->input('search') . '%');
-          })->limit(8)->get());
+            })->limit(8)->get());
         }
     }
 
     public function show(Collage $collage)
     {
-        return new ShowCollageResource($collage->load(['ratings.user']));
+        return new ShowCollageResource($collage->load([
+            'ratings.user',
+            'ratings.comments',
+            'ratings.comments.user',
+        ]));
     }
 }
