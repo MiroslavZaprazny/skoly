@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Rating;
 use App\Http\Requests\StoreRatingRequest;
 use App\Http\Resources\ShowRatingResource;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RatingController extends Controller
@@ -21,11 +22,13 @@ class RatingController extends Controller
         return response()->json('Hodnotenie bolo úspšene vytvorené', 201);
     }
 
-    public function destroy(Rating $rating, Request $request, $user = null)
+    public function destroy(Rating $rating, Request $request, $code = null)
     {
-        if ($user == null && $rating->user_ip != $request->ip()) {
+        $code != null && $user = User::where('verification_code', $code)->firstOrFail();
+
+        if ($code == null && $rating->user_ip != $request->ip()) {
             return response()->json('Nemáte oprávnenie vymazať hodnotenie', 403);
-        } else if (!$rating->user_id == $user) {
+        } else if ($code != null && $rating->user_id != $user->id) {
             return response()->json('Nemáte oprávnenie vymazať hodnotenie', 403);
         }
         $rating->delete();
