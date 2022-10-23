@@ -2,7 +2,7 @@ name: Laravel
 
 defaults:
   run:
-    working-directory: ./backend
+    working-directory: backend
 
 on:
   push:
