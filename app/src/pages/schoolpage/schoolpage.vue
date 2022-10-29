@@ -5,9 +5,9 @@
       <p>Pocet reviews ({{ schoolItem.rating_count }})</p>
     </div>
     <div class="mx-10">
-      <z-review-form></z-review-form>
+      <z-review-form :id="this.id"></z-review-form>
     </div>
-    <div class="mx-10">
+    <div class="mx-10 border-t-2 border-t-emerald-900">
       <div v-for="(review, index) in schoolItem.ratings" :key="index">
         <p>{{ review.body }}</p>
       </div>
