@@ -21,7 +21,7 @@ class ShowCollageResource extends JsonResource
             'founded_at' => $this->founded_at,
             'average_rating' => RatingsResource::collection($this->whenLoaded('ratings'))->avg('rating'),
             'rating_count' => RatingsResource::collection($this->whenLoaded('ratings'))->count(),
-            'ratings' => RatingsResource::collection($this->whenLoaded('ratings'))
+            'ratings' => ShowRatingResource::collection($this->whenLoaded('ratings'))
         ];
     }
 }
