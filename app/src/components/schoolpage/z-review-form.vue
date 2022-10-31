@@ -37,7 +37,7 @@ export default {
       axios.post(
         `http://127.0.0.1:8000/api/rating`,
         {
-          "collage_id": this.id,
+          "collage_id": Number(this.id),
           "user_id": null,
           "rating": this.rating,
           "body": this.review

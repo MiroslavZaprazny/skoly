@@ -9,7 +9,10 @@
     </div>
     <div class="mx-10 border-t-2 border-t-emerald-900">
       <div v-for="(review, index) in schoolItem.ratings" :key="index">
-        <p>{{ review.body }}</p>
+        <div class="flex">
+          <p>{{ review.body }}</p>
+          <p>{{ review.rating }}</p>
+        </div>
       </div>
     </div>
   </div>
