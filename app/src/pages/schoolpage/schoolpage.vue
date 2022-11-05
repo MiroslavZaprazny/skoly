@@ -8,12 +8,12 @@
       <z-review-form :id="this.id"></z-review-form>
     </div>
     <div class="mx-10 border-t-2 border-t-emerald-900">
-      <div v-for="(review, index) in schoolItem.ratings" :key="index">
-        <div class="flex">
-          <p>{{ review.body }}</p>
-          <p>{{ review.rating }}</p>
-        </div>
-      </div>
+        <z-review v-for="(review, index) in schoolItem.ratings" :key="review.id"
+        :id="review.id"
+        :index="index"
+        :body="review.body"
+        :rating="review.rating"
+        ></z-review>
     </div>
   </div>
 </template>
@@ -21,9 +21,10 @@
 <script>
 import axios from 'axios'
 import zReviewForm from '../../components/schoolpage/z-review-form.vue';
+import ZReview from '../../components/schoolpage/z-review.vue';
 
 export default {
-  components: { zReviewForm },
+  components: { zReviewForm, ZReview },
   props: {
     id: String,
   },
