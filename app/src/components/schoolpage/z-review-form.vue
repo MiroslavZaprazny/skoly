@@ -43,7 +43,10 @@ export default {
           "body": this.review
         }
       ).then(response => {
-        console.log(response);
+        this.$emit("createReview", response.data.rating)
+        
+        this.review = ''
+        this.setRating(0)
       })
     },
   },

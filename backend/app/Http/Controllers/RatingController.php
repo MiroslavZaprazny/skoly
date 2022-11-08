@@ -17,9 +17,15 @@ class RatingController extends Controller
 
     public function store(StoreRatingRequest $request)
     {
-        Rating::create($request->validated());
+        $rating = Rating::create($request->validated());
 
-        return response()->json('Hodnotenie bolo úspšene vytvorené', 201);
+        return response()->json(
+            [
+                'message' => 'Hodnotenie bolo úspšene vytvorené',
+                'rating' => $rating
+            ],
+            201
+        );
     }
 
     public function destroy(Rating $rating, Request $request, $code = null)

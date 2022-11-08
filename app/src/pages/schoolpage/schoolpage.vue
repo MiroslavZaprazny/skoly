@@ -5,7 +5,7 @@
       <p>Pocet reviews ({{ schoolItem.rating_count }})</p>
     </div>
     <div class="mx-10">
-      <z-review-form :id="this.id"></z-review-form>
+      <z-review-form :id="this.id" v-on:createReview="updateReview($event)"></z-review-form>
     </div>
     <div class="mx-10 border-t-2 border-t-emerald-900">
         <z-review v-for="(review, index) in schoolItem.ratings" :key="review.id"
@@ -40,6 +40,9 @@ export default {
         // console.log(this.schoolItem);
       });
     },
+    updateReview(rating) {
+      this.schoolItem.ratings = [...this.schoolItem.ratings, rating]
+    }
   },
   created() {
     this.fetchSchool();
