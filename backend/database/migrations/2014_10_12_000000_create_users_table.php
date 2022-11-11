@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->integer('age')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->uuid('verification_code')->default(DB::raw('(UUID())'));
             $table->string('password');
