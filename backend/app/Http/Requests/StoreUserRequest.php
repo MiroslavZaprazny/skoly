@@ -26,9 +26,22 @@ class StoreUserRequest extends FormRequest
         return [
             'name' => 'required|min:6',
             'email' => 'required|email|unique:users,email',
-            'age' => 'integer|min:16',
+            'age' => 'integer|min:16|max:102',
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            "required" => "Toto pole je povinné",
+            "email.email" => "Email musí mať správny formát",
+            "email.unique" => "Tento email je už zaregistrovaný",
+            "age.min" => "Musíte mať viac ako 16 rokov",
+            "age.max" => "Musíte mať menej ako 102 rokov",
+            "password.min" => "Heslo musí mať najmennej 6 znakov",
+            "password.confirmed" => "Heslá sa musia zhodovať",
         ];
     }
 }
