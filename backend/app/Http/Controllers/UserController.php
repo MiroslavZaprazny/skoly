@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\ShowUserResource;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-   
+    public function show(User $user, string $verificationCode)
+    {
+        if($verificationCode !== $user->verification_code) {
+           return response()->json([
+            'message' => 'Invalid Credentials'
+           ]); 
+        }
+
+       return new ShowUserResource($user); 
+    }
 }

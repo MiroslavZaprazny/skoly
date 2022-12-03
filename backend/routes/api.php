@@ -33,3 +33,4 @@ Route::post('/rating', [RatingController::class, 'store']);
 Route::delete('/rating/{rating}/{code?}', [RatingController::class, 'destroy'])->where('code', '.*');
 Route::get('/rating/{rating}', [RatingController::class, 'show']);
 
+Route::get('/profile/{user}/{code}', [UserController::class, 'show']);
