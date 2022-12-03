@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CollageController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ReviewController;
@@ -22,9 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/register', [UserController::class, 'register']);
-
-Route::post('/login', [UserController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/collages', [CollageController::class, 'search']);
 Route::get('/collage/{collage}', [CollageController::class, 'show']);
@@ -32,3 +32,4 @@ Route::get('/collage/{collage}', [CollageController::class, 'show']);
 Route::post('/rating', [RatingController::class, 'store']);
 Route::delete('/rating/{rating}/{code?}', [RatingController::class, 'destroy'])->where('code', '.*');
 Route::get('/rating/{rating}', [RatingController::class, 'show']);
+
