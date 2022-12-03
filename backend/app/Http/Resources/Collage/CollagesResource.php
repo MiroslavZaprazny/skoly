@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Collage;
 
+use App\Http\Resources\Rating\RatingsResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CollagesResource extends JsonResource

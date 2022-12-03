@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Rating;
 
+use App\Http\Resources\User\UserResource;
+use App\Http\Resources\Comment\CommentResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class RatingsResource extends JsonResource

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rating;
-use App\Http\Requests\StoreRatingRequest;
-use App\Http\Resources\ShowRatingResource;
+use App\Http\Requests\Ratings\StoreRatingRequest;
+use App\Http\Resources\Rating\ShowRatingResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 

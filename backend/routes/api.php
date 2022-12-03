@@ -34,3 +34,4 @@ Route::delete('/rating/{rating}/{code?}', [RatingController::class, 'destroy'])-
 Route::get('/rating/{rating}', [RatingController::class, 'show']);
 
 Route::get('/profile/{user}/{code}', [UserController::class, 'show']);
+Route::patch('/profile/{user}/{code}', [UserController::class, 'update']);

@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Http\Requests\LoginRequest;
-use App\Http\Resources\UserResource;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Resources\User\UserResource;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\Auth\RegisterRequest;
 
 class AuthController extends Controller
 {
- public function register(StoreUserRequest $request)
+    public function register(RegisterRequest $request)
     {
         User::create($request->validated());
 

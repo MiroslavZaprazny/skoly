@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CollagesResource;
-use App\Http\Resources\ShowCollageResource;
+use App\Http\Resources\Collage\CollagesResource;
+use App\Http\Resources\Collage\ShowCollageResource;
 use App\Models\Collage;
 use Illuminate\Http\Request;
 
