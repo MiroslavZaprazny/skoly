@@ -6,9 +6,7 @@ use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-
-/*
+use Illuminate\Support\Facades\Route;/*
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
@@ -29,9 +27,12 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/collages', [CollageController::class, 'search']);
 Route::get('/collage/{collage}', [CollageController::class, 'show']);
 
-Route::post('/rating', [RatingController::class, 'store']);
-Route::delete('/rating/{rating}/{code?}', [RatingController::class, 'destroy'])->where('code', '.*');
 Route::get('/rating/{rating}', [RatingController::class, 'show']);
 
-Route::get('/profile/{user}/{code}', [UserController::class, 'show']);
-Route::patch('/profile/{user}/{code}', [UserController::class, 'update']);
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('/profile/{user}/{code}', [UserController::class, 'show']);
+    Route::put('/profile/{user}/{code}', [UserController::class, 'update']);
+
+    Route::post('/rating', [RatingController::class, 'store']);
+    Route::delete('/rating/{rating}/{code?}', [RatingController::class, 'destroy'])->where('code', '.*');
+});

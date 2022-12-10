@@ -21,13 +21,12 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $user = User::where('email', $request->email)->firstOrFail();
-
         if (!Auth::attempt($request->validated())) {
             return response()->json(["error" => "Zadali ste nesprávne heslo"], 401);
         }
 
         $token = auth()->user()->createToken('main')->plainTextToken;
+        $user = User::where('email', $request->email)->firstOrFail();
 
         return response()->json([
             'user' => new UserResource($user),

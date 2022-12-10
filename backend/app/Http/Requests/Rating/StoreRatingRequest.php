@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Ratings;
+namespace App\Http\Requests\Rating;
 
 use Illuminate\Foundation\Http\FormRequest;
 
