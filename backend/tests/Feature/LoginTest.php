@@ -54,7 +54,6 @@ class LoginTest extends TestCase
                 "name",
                 "email",
                 "age",
-                "verification_code",
             ],
             'token'
         ]);

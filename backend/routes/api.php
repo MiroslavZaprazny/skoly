@@ -28,11 +28,10 @@ Route::post('/collages', [CollageController::class, 'search']);
 Route::get('/collage/{collage}', [CollageController::class, 'show']);
 
 Route::get('/rating/{rating}', [RatingController::class, 'show']);
+Route::post('/rating', [RatingController::class, 'store']);
+Route::delete('/rating/{rating}', [RatingController::class, 'destroy']);
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::get('/profile/{user}/{code}', [UserController::class, 'show']);
-    Route::put('/profile/{user}/{code}', [UserController::class, 'update']);
-
-    Route::post('/rating', [RatingController::class, 'store']);
-    Route::delete('/rating/{rating}/{code?}', [RatingController::class, 'destroy'])->where('code', '.*');
+    Route::get('/profile/{user}', [UserController::class, 'show']);
+    Route::put('/profile/{user}', [UserController::class, 'update']);
 });

@@ -5,30 +5,28 @@ namespace App\Http\Controllers;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Resources\User\ShowUserResource;
 use App\Models\User;
-use App\Services\User\UserService;
+use App\Trait\Auth\AuthenticateUser;
 
 class UserController extends Controller
 {
-    public function show(User $user, string $verificationCode)
+    use AuthenticateUser;
+
+    public function show(User $user)
     {
-        if ($user->isAuthorized($verificationCode) === false) {
-            return response()->json([
-                'message' => 'invalid credentials',
-                402
-            ]);
+        if ($this->authUser($user)) {
+            return $this->authUser($user);
         }
 
-        return new ShowUserResource($user);
+        return $this->authUser($user) ?
+            $this->authUser($user) : new ShowUserResource($user);
     }
 
-    public function update(User $user, string $verificationCode, UpdateUserRequest $request)
+    public function update(User $user, UpdateUserRequest $request)
     {
-        if ($user->isAuthorized($verificationCode) === false) {
-            return response()->json([
-                'message' => 'invalid credentials',
-                'status' => 402
-            ]);
+        if ($this->authUser($user)) {
+            return $this->authUser($user);
         }
+
         $user->update($request->validated());
 
         return response()->json([

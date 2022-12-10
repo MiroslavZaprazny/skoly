@@ -39,6 +39,7 @@ class RatingTest extends TestCase
             'X-Requested-With' => 'XMLHttpRequest'
         ]);
 
+        $response->assertStatus(422);
         $this->assertDatabaseMissing('ratings', $data);
     }
 
@@ -98,22 +99,6 @@ class RatingTest extends TestCase
         $this->assertDatabaseMissing('ratings', $data2);
     }
 
-    public function test_users_with_correct_ip_can_delete_ratings()
-    {
-        $rating = Rating::factory()->create([
-            'collage_id' => 1,
-            'user_id' => null,
-            'user_ip' => '127.0.0.1',
-            'rating' => 1,
-            'body' => 'test'
-        ]);
-
-        $this->assertDatabaseHas('ratings', $rating->toArray());
-
-        $this->delete("/api/rating/{$rating->id}");
-        $this->assertDatabaseMissing('ratings', $rating->toArray());
-    }
-
     public function test_users_with_correct_id_can_delete_ratings()
     {
         $user = User::factory()->create();
@@ -128,27 +113,18 @@ class RatingTest extends TestCase
 
         $this->assertDatabaseHas('ratings', $rating->toArray());
 
-        $this->delete("/api/rating/$rating->id/$user->verification_code");
+        $this->post('/api/login', [
+            'email' => $user->email,
+            'password' => 'test123',
+        ]);
+
+        $response = $this->delete("/api/rating/$rating->id");
+
+        $response->assertStatus(201);
         $this->assertDatabaseMissing('ratings', $rating->toArray());
     }
 
-    public function test_users_with_incorrect_ip_cannot_delete_ratings()
-    {
-        $rating = Rating::factory()->create([
-            'collage_id' => 1,
-            'user_id' => null,
-            'user_ip' => '27.0.0.1',
-            'rating' => 1,
-            'body' => 'test'
-        ]);
-
-        $this->assertDatabaseHas('ratings', $rating->toArray());
-
-        $this->delete("/api/rating/{$rating->id}");
-        $this->assertDatabaseHas('ratings', $rating->toArray());
-    }
-
-    public function test_users_with_incorrect_id_cannot_delete_ratings()
+    public function test_user_with_incorrect_id_cannot_delete_ratings()
     {
         $user = User::factory()->create();
         $user2 = User::factory()->create();
@@ -171,12 +147,12 @@ class RatingTest extends TestCase
 
         $this->assertDatabaseHas('ratings', $rating->toArray());
 
-        $this->delete("/api/rating/{$rating->id}/{$user2->verification_code}");
+        $this->delete("/api/rating/{$rating->id}");
         $this->assertDatabaseHas('ratings', $rating->toArray());
 
         $this->assertDatabaseHas('ratings', $rating2->toArray());
 
-        $this->delete("/api/rating/{$rating2->id}/{$user->verification_code}");
+        $this->delete("/api/rating/{$rating2->id}");
         $this->assertDatabaseHas('ratings', $rating2->toArray());
     }
 }
