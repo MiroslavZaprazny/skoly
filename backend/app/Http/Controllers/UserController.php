@@ -13,18 +13,18 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        if ($this->authUser($user)) {
-            return $this->authUser($user);
+        if ($this->authUser($user->id)) {
+            return $this->authUser($user->id);
         }
 
-        return $this->authUser($user) ?
-            $this->authUser($user) : new ShowUserResource($user);
+        return $this->authUser($user->id) ?
+            $this->authUser($user->id) : new ShowUserResource($user);
     }
 
     public function update(User $user, UpdateUserRequest $request)
     {
-        if ($this->authUser($user)) {
-            return $this->authUser($user);
+        if ($this->authUser($user->id)) {
+            return $this->authUser($user->id);
         }
 
         $user->update($request->validated());

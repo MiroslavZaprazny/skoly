@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Resources\User\UserResource;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Auth\RegisterRequest;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -31,6 +32,15 @@ class AuthController extends Controller
         return response()->json([
             'user' => new UserResource($user),
             'token' => $token
+        ]);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return response()->json([
+            'message' => 'Úspešne ste sa odlhásili'
         ]);
     }
 }

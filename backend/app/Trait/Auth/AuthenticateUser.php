@@ -6,11 +6,11 @@ use App\Models\User;
 
 trait AuthenticateUser
 {
-    protected function authUser(User $user)
+    protected function authUser(int $userId)
     {
-        if (auth()->user()->id !== $user->id) {
+        if (auth()->user()->id !== $userId) {
             return response()->json([
-                'message' => 'invalid credentials',
+                'message' => 'Not authorized to make this request',
                 'status' => 402
             ]);
         }

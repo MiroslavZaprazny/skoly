@@ -33,7 +33,7 @@ class RatingController extends Controller
 
     public function destroy(Rating $rating)
     {
-        if ($rating->user_id !== auth()->user()?->id) {
+        if ($this->authUser($rating->user_id)) {
             return response()->json('Nemáte oprávnenie vymazať hodnotenie', 403);
         }
 
