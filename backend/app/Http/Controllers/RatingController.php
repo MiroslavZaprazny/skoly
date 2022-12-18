@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Rating;
 use App\Http\Requests\Rating\StoreRatingRequest;
 use App\Http\Resources\Rating\ShowRatingResource;
-use App\Models\User;
 use App\Trait\Auth\AuthenticateUser;
-use Illuminate\Http\Request;
 
 class RatingController extends Controller
 {

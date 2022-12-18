@@ -4,7 +4,7 @@
       <div class="container mx-auto flex flex-wrap items-center justify-evenly">
         <router-link to="/">Domov</router-link>
         <div v-if="user">
-          <router-link to="/logout">Odlhasit sa</router-link>
+          <button @click="logout">Odlhasit sa</button>
         </div>
         <div v-if="!user">
           <router-link to="/login">Prihlasenie</router-link>
@@ -22,6 +22,12 @@ export default {
       return this.$store.getters['user']
     },
   },
+  methods: {
+    logout() {
+      //TODO: odhlasenie 
+      console.log('odhlasenie')
+    }         
+  }
 }
 </script>
 
