@@ -29,10 +29,19 @@ class AuthController extends Controller
         $token = auth()->user()->createToken('main')->plainTextToken;
         $user = User::where('email', $request->email)->firstOrFail();
 
+
+
         return response()->json([
-            'user' => new UserResource($user),
-            'token' => $token
-        ]);
+            'user' => new UserResource($user)
+        ])->cookie(
+            'jwt',
+            $token
+        );
+    }
+
+    public function user()
+    {
+        return auth()->user();
     }
 
     public function logout(Request $request)

@@ -45,17 +45,17 @@ export default {
           headers: {
             "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest"
-          }
+          },
+          withCredentials: true,
         }
       ).catch(err => {
         if (err.response) {
           console.log(err.response.data)
           return;
         }
+
       }).then((response) => {
         if (response) {
-          sessionStorage.setItem("TOKEN", response.data.token)
-
           this.$router.push({
             name: "homepage",
           })

@@ -20,25 +20,43 @@
 
 <script>
 
-// import axios from 'axios';
+import axios from 'axios';
 import schoolItem from '../../components/homepage/schoolItem.vue';
 import Searchbar from '../../components/homepage/searchbar.vue';
 
 export default {
   components: { schoolItem, Searchbar },
-
+  async mounted() {
+    try {
+      const res = await axios.get(
+        'http://127.0.0.1:8000/api/user',
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest"
+          },
+          withCredentials: true,
+        }
+      )
+      console.log(res)
+      this.$store.dispatch('setAuth', true)
+    } catch (e) {
+      console.log(e)
+      this.$store.dispatch('setAuth', false)
+    }
+  },
   methods: {
     setSearchResult(searchResult, input) {
-        this.schools = searchResult
-        this.input = input
+      this.schools = searchResult
+      this.input = input
     }
   },
 
   data() {
-      return {
-        schools: [],
-        input : '',
-      }
+    return {
+      schools: [],
+      input: '',
+    }
   },
 }
 </script>

@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class LoginTest extends TestCase
@@ -54,9 +53,9 @@ class LoginTest extends TestCase
                 "name",
                 "email",
                 "age",
-            ],
-            'token'
+            ]
         ]);
+        $loginResponse->assertCookie('jwt');
 
         $this->assertDatabaseHas('personal_access_tokens', [
             'tokenable_id' => $loginResponse['user']['id']

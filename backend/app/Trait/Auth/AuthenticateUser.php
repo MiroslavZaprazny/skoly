@@ -2,8 +2,6 @@
 
 namespace App\Trait\Auth;
 
-use App\Models\User;
-
 trait AuthenticateUser
 {
     protected function authUser(int $userId)
