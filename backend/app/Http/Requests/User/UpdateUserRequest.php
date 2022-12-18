@@ -24,8 +24,8 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'min:6',
-            'email' => 'email|unique:users,email',
+            'name' => 'min:6|max:255',
+            'email' => 'email|unique:users,email|max:255',
             'age' => 'integer|min:16|max:102',
         ];
     }

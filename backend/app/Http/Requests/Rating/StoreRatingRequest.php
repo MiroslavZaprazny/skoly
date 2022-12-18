@@ -28,7 +28,7 @@ class StoreRatingRequest extends FormRequest
             'user_id' => 'nullable|unique:ratings,user_id,NULL,id,collage_id,' . $this->input('collage_id'),
             'user_ip' => 'unique:ratings,user_ip,NULL,id,collage_id,' . $this->input('collage_id'),
             'rating' => 'required',
-            'body' => 'required',
+            'body' => 'required|max:255',
         ];
     }
 
