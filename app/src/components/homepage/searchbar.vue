@@ -13,6 +13,7 @@
 
 <script>
 import { vue3Debounce } from 'vue-debounce'
+import axios from 'axios'
 
 export default {
   directives: {
@@ -21,15 +22,22 @@ export default {
   data() {
     return {
       search: '',
+      schools: [],
     }
   },
   methods: {
     searchUpdate() {
-      if (this.search.length >= 2) {
-        this.$store.dispatch('searchSchools', this.search)
-      }
-    }
-  },
+        axios.post('http://127.0.0.1:8000/api/collages', {
+          search: this.search
+        })
+          .then((response) => {
+            this.$emit('setSearchResult', response.data.data, this.search) 
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+    },
+  }
 }
 </script>
 
