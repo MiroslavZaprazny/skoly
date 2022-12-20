@@ -13,7 +13,7 @@ class UserProfileTest extends TestCase
     private function getUser(): User
     {
         return User::factory()->create([
-            'name' => 'test',
+            'name' => 'blabla bla profile test123',
             'email' => 'test123@email.com',
             'password' => 'heslo123',
         ]);
@@ -28,6 +28,18 @@ class UserProfileTest extends TestCase
         ]);
 
         return $user;
+    }
+
+    public function test_user_needs_to_be_logged_in_to_access_his_profile()
+    {
+        $user = User::factory()->create([
+            'name' => 'blabla bla profile test123',
+            'email' => 'test123@email.com',
+            'password' => 'heslo123',
+        ]);
+
+        $response = $this->get(sprintf("/api/profile/%s", $user->id));
+        $response->assertStatus(401);
     }
 
     public function test_user_profile_get_request_returns_correct_data()
@@ -49,8 +61,19 @@ class UserProfileTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function user_can_edit_his_profile()
+    public function test_user_can_edit_his_profile()
     {
-        //TODO
+      $user = $this->login();
+      
+      $data = [
+        'name' => 'Janko hrasko',
+        'age' => 18,
+      ]; 
+
+      $response = $this->patch("/api/profile/" . $user->id, $data);
+
+      $response->assertStatus(200);
+      $this->assertDatabaseHas('users', ['name' => 'Janko Hrasko', 'age' => 18]); 
+      $this->assertDatabaseMissing('users', ['name' => $user->name]);
     }
 }

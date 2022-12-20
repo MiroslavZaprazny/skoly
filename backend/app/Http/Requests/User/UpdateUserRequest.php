@@ -25,7 +25,6 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'min:6|max:255',
-            'email' => 'email|unique:users,email|max:255',
             'age' => 'integer|min:16|max:102',
         ];
     }
@@ -33,8 +32,6 @@ class UpdateUserRequest extends FormRequest
     public function messages()
     {
         return [
-            "email.email" => "Email musí mať správny formát",
-            "email.unique" => "Tento email je už zaregistrovaný",
             "age.min" => "Musíte mať viac ako 16 rokov",
             "age.max" => "Musíte mať menej ako 102 rokov",
         ];

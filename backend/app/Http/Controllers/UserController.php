@@ -17,8 +17,7 @@ class UserController extends Controller
             return $this->authUser($user->id);
         }
 
-        return $this->authUser($user->id) ?
-            $this->authUser($user->id) : new ShowUserResource($user);
+        return new ShowUserResource($user);
     }
 
     public function update(User $user, UpdateUserRequest $request)

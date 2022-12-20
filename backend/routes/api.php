@@ -25,7 +25,7 @@ Route::get('/rating/{rating}', [RatingController::class, 'show']);
 Route::post('/rating', [RatingController::class, 'store']);
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::put('/profile/{user}', [UserController::class, 'update']);
+    Route::patch('/profile/{user}', [UserController::class, 'update']);
     Route::get('/profile/{user}', [UserController::class, 'show']);
 
     Route::delete('/rating/{rating}', [RatingController::class, 'destroy']);
