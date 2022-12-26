@@ -1,13 +1,15 @@
 <template>
-  <div class="flex">
-    <p>{{ body }}</p>
-    <p>{{ rating }}</p>
-  </div>
+  <router-link :to="{ name: 'reviewDetail', params: { id: review.id } }" class="flex">
+    <p>{{ review.body }}</p>
+    <p>{{ review.rating }}</p>
+  </router-link>
 </template>
 
 <script>
 export default {
-  props: ['id', 'body', 'rating'],
+  props: {
+    review: Object
+  }
 }
 </script>
 

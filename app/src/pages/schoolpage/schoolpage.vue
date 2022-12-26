@@ -8,12 +8,7 @@
       <z-review-form :id="this.id" v-on:createReview="updateReview($event)"></z-review-form>
     </div>
     <div class="mx-10 border-t-2 border-t-emerald-900">
-        <z-review v-for="(review, index) in schoolItem.ratings" :key="review.id"
-        :id="review.id"
-        :index="index"
-        :body="review.body"
-        :rating="review.rating"
-        ></z-review>
+      <z-review v-for="review in schoolItem.ratings" :key="review.id" :review="review"></z-review>
     </div>
   </div>
 </template>
@@ -34,8 +29,8 @@ export default {
     };
   },
   methods: {
-    async fetchSchool() {
-      await axios.get(`http://127.0.0.1:8000/api/collage/${this.id}`).then((response) => {
+    fetchSchool() {
+      axios.get(`http://127.0.0.1:8000/api/collage/${this.id}`).then((response) => {
         this.schoolItem = response.data.data;
         // console.log(this.schoolItem);
       });

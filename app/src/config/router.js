@@ -21,7 +21,13 @@ const routes = [
     path: "/login",
     name: "login",
     component: () => import("../pages/login/login.vue")
-  }
+  },
+  {
+    path: "/review/:id",
+    name: 'reviewDetail',
+    component: () => import("../pages/reviews/reviewDetail.vue"),
+    props: true
+  },
 ];
 
 
