@@ -10,20 +10,10 @@
     <form @submit.prevent="login">
       <div class="flex flex-col items-center">
         <div>
-          <input
-            class="input"
-            type="email"
-            placeholder="email"
-            v-model="email"
-          />
+          <input class="input" type="email" placeholder="email" v-model="email" />
         </div>
         <div>
-          <input
-            class="input"
-            type="password"
-            placeholder="heslo"
-            v-model="password"
-          />
+          <input class="input" type="password" placeholder="heslo" v-model="password" />
         </div>
         <div class="submit-btn">
           <button>login</button>
@@ -47,7 +37,7 @@ export default {
     login() {
       axios
         .post(
-          "http://127.0.0.1:8000/api/login",
+          "/api/login",
           {
             email: this.email,
             password: this.password,

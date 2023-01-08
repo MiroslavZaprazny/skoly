@@ -27,15 +27,15 @@ export default {
   },
   methods: {
     searchUpdate() {
-        axios.post('http://127.0.0.1:8000/api/collages', {
-          search: this.search
+      axios.post('/api/collages', {
+        search: this.search
+      })
+        .then((response) => {
+          this.$emit('setSearchResult', response.data.data, this.search)
         })
-          .then((response) => {
-            this.$emit('setSearchResult', response.data.data, this.search) 
-          })
-          .catch((error) => {
-            console.log(error);
-          })
+        .catch((error) => {
+          console.log(error);
+        })
     },
   }
 }

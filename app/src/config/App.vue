@@ -9,7 +9,7 @@ import Layout from "../components/layout/Layout.vue";
 export default {
   async mounted() {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/user", {
+      const res = await axios.get("/api/user", {
         headers: {
           "Content-Type": "application/json",
           "X-Requested-With": "XMLHttpRequest",

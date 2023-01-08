@@ -5,18 +5,25 @@
       <p>Pocet reviews ({{ schoolItem.rating_count }})</p>
     </div>
     <div class="mx-10">
-      <z-review-form :id="this.id" v-on:createReview="updateReview($event)"></z-review-form>
+      <z-review-form
+        :id="this.id"
+        v-on:createReview="updateReview($event)"
+      ></z-review-form>
     </div>
     <div class="mx-10 border-t-2 border-t-emerald-900">
-      <z-review v-for="review in schoolItem.ratings" :key="review.id" :review="review"></z-review>
+      <z-review
+        v-for="review in schoolItem.ratings"
+        :key="review.id"
+        :review="review"
+      ></z-review>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-import zReviewForm from '../../components/schoolpage/z-review-form.vue';
-import ZReview from '../../components/schoolpage/z-review.vue';
+import axios from "axios";
+import zReviewForm from "../../components/schoolpage/z-review-form.vue";
+import ZReview from "../../components/schoolpage/z-review.vue";
 
 export default {
   components: { zReviewForm, ZReview },
@@ -30,21 +37,19 @@ export default {
   },
   methods: {
     fetchSchool() {
-      axios.get(`http://127.0.0.1:8000/api/collage/${this.id}`).then((response) => {
+      axios.get(`/api/collage/${this.id}`).then((response) => {
         this.schoolItem = response.data.data;
         // console.log(this.schoolItem);
       });
     },
     updateReview(rating) {
-      this.schoolItem.ratings = [...this.schoolItem.ratings, rating]
-    }
+      this.schoolItem.ratings = [...this.schoolItem.ratings, rating];
+    },
   },
   created() {
     this.fetchSchool();
   },
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
