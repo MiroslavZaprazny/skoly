@@ -29,8 +29,6 @@ class AuthController extends Controller
         $token = auth()->user()->createToken('main')->plainTextToken;
         $user = User::where('email', $request->email)->firstOrFail();
 
-
-
         return response()->json([
             'user' => new UserResource($user)
         ])->cookie(

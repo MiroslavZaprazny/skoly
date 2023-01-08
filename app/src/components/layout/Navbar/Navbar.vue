@@ -16,21 +16,19 @@
 
 <script>
 export default {
-  name: 'Navbar',
+  name: "Navbar",
   computed: {
     user() {
-      return this.$store.getters['user']
+      return this.$store.getters["user"];
     },
   },
   methods: {
     logout() {
-      //TODO: odhlasenie 
-      console.log('odhlasenie')
-    }         
-  }
-}
+      //TODO: odhlasenie
+      console.log("odhlasenie");
+    },
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

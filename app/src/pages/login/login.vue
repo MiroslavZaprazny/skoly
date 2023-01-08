@@ -10,10 +10,20 @@
     <form @submit.prevent="login">
       <div class="flex flex-col items-center">
         <div>
-          <input class="input" type="text" placeholder="email" v-model="email">
+          <input
+            class="input"
+            type="email"
+            placeholder="email"
+            v-model="email"
+          />
         </div>
         <div>
-          <input class="input" type="input" placeholder="heslo" v-model="password">
+          <input
+            class="input"
+            type="password"
+            placeholder="heslo"
+            v-model="password"
+          />
         </div>
         <div class="submit-btn">
           <button>login</button>
@@ -24,54 +34,56 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 
 export default {
   data() {
     return {
-      email: '',
-      password: '',
-    }
+      email: "",
+      password: "",
+    };
   },
   methods: {
     login() {
-      axios.post(
-        'http://127.0.0.1:8000/api/login',
-        {
-          "email": this.email,
-          "password": this.password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "X-Requested-With": "XMLHttpRequest"
+      axios
+        .post(
+          "http://127.0.0.1:8000/api/login",
+          {
+            email: this.email,
+            password: this.password,
           },
-          withCredentials: true,
-        }
-      ).catch(err => {
-        if (err.response) {
-          console.log(err.response.data)
-          return;
-        }
-
-      }).then((response) => {
-        if (response) {
-          this.$router.push({
-            name: "homepage",
-          })
-        }
-      })
-    }
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "X-Requested-With": "XMLHttpRequest",
+            },
+            withCredentials: true,
+          }
+        )
+        .catch((err) => {
+          if (err.response) {
+            console.log(err.response.data);
+            return;
+          }
+        })
+        .then((response) => {
+          if (response) {
+            this.$router.push({
+              name: "homepage",
+            });
+          }
+        });
+    },
   },
-}
+};
 </script>
 
 <style>
 .input {
-  @apply border rounded-lg border-black p-1 my-2
+  @apply border rounded-lg border-black p-1 my-2;
 }
 
 .submit-btn {
-  @apply bg-purple-primary text-gray-50 py-2 px-4 rounded-lg mt-4 cursor-pointer
+  @apply bg-purple-primary text-gray-50 py-2 px-4 rounded-lg mt-4 cursor-pointer;
 }
 </style>

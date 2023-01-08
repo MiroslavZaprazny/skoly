@@ -3,15 +3,23 @@
     <div>
       <searchbar @setSearchResult="setSearchResult"></searchbar>
     </div>
-    <div class="flex grid gap-16 grid-cols-1 sm:grid-cols-2 mt-20 lg:grid-cols-3 2xl:grid-cols-4 mx-16"
-      v-if="schools?.length >= 1">
+    <div
+      class="flex grid gap-16 grid-cols-1 sm:grid-cols-2 mt-20 lg:grid-cols-3 2xl:grid-cols-4 mx-16"
+      v-if="schools?.length >= 1"
+    >
       <div v-for="(school, index) in schools" :key="index">
         <router-link :to="{ name: 'SchoolDetail', params: { id: school.id } }">
-          <school-item :name="school.name" :rating="school.average_rating" :description="school.description" />
+          <school-item
+            :name="school.name"
+            :rating="school.average_rating"
+            :description="school.description"
+          />
         </router-link>
       </div>
     </div>
-    <h1 v-if="!schools || input?.length <= 1">Prosím zadajte názov školy do vyhľadávania</h1>
+    <h1 v-if="!schools || input?.length <= 1">
+      Prosím zadajte názov školy do vyhľadávania
+    </h1>
     <h1 v-if="input?.length >= 2 && schools?.length == 0">
       Nenasiel sa vysledok pre vyhladanie "{{ input }}"
     </h1>
@@ -19,48 +27,25 @@
 </template>
 
 <script>
-
-import axios from 'axios';
-import schoolItem from '../../components/homepage/schoolItem.vue';
-import Searchbar from '../../components/homepage/searchbar.vue';
+import schoolItem from "../../components/homepage/schoolItem.vue";
+import Searchbar from "../../components/homepage/searchbar.vue";
 
 export default {
   components: { schoolItem, Searchbar },
-  async mounted() {
-    try {
-      const res = await axios.get(
-        'http://127.0.0.1:8000/api/user',
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "X-Requested-With": "XMLHttpRequest"
-          },
-          withCredentials: true,
-        }
-      )
-      console.log(res)
-      this.$store.dispatch('setAuth', true)
-    } catch (e) {
-      console.log(e)
-      this.$store.dispatch('setAuth', false)
-    }
-  },
   methods: {
     setSearchResult(searchResult, input) {
-      this.schools = searchResult
-      this.input = input
-    }
+      this.schools = searchResult;
+      this.input = input;
+    },
   },
 
   data() {
     return {
       schools: [],
-      input: '',
-    }
+      input: "",
+    };
   },
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
