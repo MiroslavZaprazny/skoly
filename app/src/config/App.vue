@@ -16,11 +16,11 @@ export default {
         },
         withCredentials: true,
       });
-      console.log(res);
-      this.$store.dispatch("setAuth", true);
+      console.log(res.data);
+      this.$store.dispatch("setUser", res.data);
     } catch (e) {
       console.log(e);
-      this.$store.dispatch("setAuth", false);
+      this.$store.dispatch("setUser", {});
     }
   },
   components: {
