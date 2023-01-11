@@ -10,6 +10,13 @@ export default {
   },
   actions: {
     setUser: ({ commit }, user) => commit("SET_USER", user),
+    async logout() {
+      try {
+        axios.post(`/logout`)
+      } catch (e) {
+        console.log(e);
+      }
+    }
   },
   getters: {
     user(state) {

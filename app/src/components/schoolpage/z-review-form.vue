@@ -19,6 +19,7 @@
 
 <script>
 import axios from "axios";
+import StarRating from 'vue-star-rating';
 
 export default {
   data() {
@@ -33,6 +34,11 @@ export default {
   components: {
     StarRating,
   },
+   computed: {
+    user() {
+      return this.$store.getters["user"];
+    },
+  },
   methods: {
     setRating(rating) {
       this.rating = rating;
@@ -41,7 +47,7 @@ export default {
       axios
         .post(`/api/rating`, {
           collage_id: Number(this.id),
-          user_id: null,
+          user_id: user.id,
           rating: this.rating,
           body: this.review,
         })

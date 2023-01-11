@@ -15,6 +15,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Navbar",
   computed: {
@@ -24,9 +25,8 @@ export default {
   },
   methods: {
     logout() {
-      //TODO: odhlasenie
-      console.log("odhlasenie");
-    },
+      store.dispatch('logout')
+    }
   },
 };
 </script>

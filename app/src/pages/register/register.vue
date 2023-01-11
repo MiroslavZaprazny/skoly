@@ -49,7 +49,7 @@ export default {
     return {
       name: "",
       email: "",
-      age: 0,
+      age: null,
       password: "",
       passwordConfirmation: "",
     };
