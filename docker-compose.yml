@@ -1,5 +1,30 @@
 version: "3"
 services:
+  php:
+    build: ./backend
+    container_name: php
+    volumes:
+      - ./backend:/var/www
+    ports:
+      - "9000:9000"
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0
+    container_name: db
+    # restart: unless-stopped
+    # tty: true
+    ports:
+      - "4306:3306"
+    environment:
+      MYSQL_DATABASE: skoly
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: tajneheslo123
+      MYSQL_ROOT_PASSWORD: tajneheslo123
+      # SERVICE_TAGS: dev
+      # SERVICE_NAME: db
+    # volumes:
+    #   - db-data:/var/lib/mysql
   app:
     container_name: app
     build: ./app
@@ -19,30 +44,5 @@ services:
   #   depends_on:
   #     - php
   #     - db
-  db:
-    image: mysql:8
-    container_name: db
-    restart: unless-stopped
-    tty: true
-    ports:
-      - "4306:3306"
-    environment:
-      MYSQL_DATABASE: skoly
-      MYSQL_USER: docker
-      MYSQL_PASSWORD: tajneheslo123
-      MYSQL_ROOT_PASSWORD: tajneheslo123
-      # SERVICE_TAGS: dev
-      # SERVICE_NAME: db
-    # volumes:
-    #   - db-data:/var/lib/mysql
-  php:
-    build: ./backend
-    container_name: php
-    volumes:
-      - ./backend:/var/www
-    ports:
-      - "9000:9000"
-    depends_on:
-      - db
 # volumes:
 #   db-data: ~
