@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CollageController;
+use App\Http\Controllers\Rating\LikeController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;/*
@@ -28,6 +29,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::patch('/profile/{user}', [UserController::class, 'update']);
     Route::get('/profile/{user}', [UserController::class, 'show']);
 
+    Route::post('/rating/{rating}/like', [LikeController::class, 'create']);
     Route::delete('/rating/{rating}', [RatingController::class, 'destroy']);
 
     Route::get('/user', [AuthController::class, 'user']);

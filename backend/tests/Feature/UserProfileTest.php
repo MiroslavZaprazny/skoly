@@ -10,26 +10,6 @@ class UserProfileTest extends TestCase
 {
     use RefreshDatabase;
 
-    private function getUser(): User
-    {
-        return User::factory()->create([
-            'name' => 'blabla bla profile test123',
-            'email' => 'test123@email.com',
-            'password' => 'heslo123',
-        ]);
-    }
-
-    private function login()
-    {
-        $user = $this->getUser();
-        $this->post('/api/login', [
-            'email' => $user->email,
-            'password' => 'heslo123',
-        ]);
-
-        return $user;
-    }
-
     public function test_user_needs_to_be_logged_in_to_access_his_profile()
     {
         $user = User::factory()->create([
@@ -63,17 +43,17 @@ class UserProfileTest extends TestCase
 
     public function test_user_can_edit_his_profile()
     {
-      $user = $this->login();
-      
-      $data = [
-        'name' => 'Janko hrasko',
-        'age' => 18,
-      ]; 
+        $user = $this->login();
 
-      $response = $this->patch("/api/profile/" . $user->id, $data);
+        $data = [
+            'name' => 'Janko hrasko',
+            'age' => 18,
+        ];
 
-      $response->assertStatus(200);
-      $this->assertDatabaseHas('users', ['name' => 'Janko Hrasko', 'age' => 18]); 
-      $this->assertDatabaseMissing('users', ['name' => $user->name]);
+        $response = $this->patch("/api/profile/" . $user->id, $data);
+
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('users', ['name' => 'Janko Hrasko', 'age' => 18]);
+        $this->assertDatabaseMissing('users', ['name' => $user->name]);
     }
 }
