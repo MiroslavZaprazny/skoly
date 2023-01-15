@@ -13,7 +13,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        if ($this->authUser($user->id)) {
+        if (!$this->authUser($user->id)) {
             return $this->authUser($user->id);
         }
 
@@ -22,7 +22,7 @@ class UserController extends Controller
 
     public function update(User $user, UpdateUserRequest $request)
     {
-        if ($this->authUser($user->id)) {
+        if (!$this->authUser($user->id)) {
             return $this->authUser($user->id);
         }
 
