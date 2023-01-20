@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
 
         $collage = Collage::factory()->create([
             'name' => 'FEI STU',
+            'slug' => 'fei-stu',
             'description' => 'Poslaním Fakulty elektrotechniky a informatiky, jednej z najstarších
                 technických fakúlt na Slovensku s bohatou vedeckou a výskumnou činnosťou, 
                 je poskytovanie kvalitného vzdelávania na báze slobodného vedeckého bádania
@@ -35,20 +36,15 @@ class DatabaseSeeder extends Seeder
 
         Collage::factory()->create([
             'name' => 'FIIT STU',
+            'slug' => 'fiit-stu',
             'description' => 'Fakulta informatiky a informačných technológií STU v Bratislave
                 Na Slovensku v súčasnosti chýba až 20 000 informatikov, v Európe dokonca až 900 000! Zaplň medzeru na trhu.',
-        ]);
-
-        Collage::factory()->create([
-            'name' => 'MTF STU',
-            'description' => 'Materiálovotechnologická fakulta STU v Bratislave so sídlom v Trnave chce byť, v 
-                kontexte s víziou STU, výskumne orientovanou, celoslovensky a medzinárodne uznávanou a priemyslom akceptovanou fakultou. 
-                Chce poskytovať špičkové, medzinárodne porovnateľné vzdelávanie a rozvíjať moderné trendy vo výskume a priemyselnej výrobe.',
         ]);
 
         foreach (range(1, 300) as $test) {
             Collage::factory()->create([
                 'name' => 'MTF STU',
+                'slug' => 'mtf-stu',
                 'description' => 'Materiálovotechnologická fakulta STU v Bratislave so sídlom v Trnave chce byť, v 
                 kontexte s víziou STU, výskumne orientovanou, celoslovensky a medzinárodne uznávanou a priemyslom akceptovanou fakultou. 
                 Chce poskytovať špičkové, medzinárodne porovnateľné vzdelávanie a rozvíjať moderné trendy vo výskume a priemyselnej výrobe.',
