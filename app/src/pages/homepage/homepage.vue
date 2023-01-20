@@ -8,9 +8,7 @@
       v-if="schools?.length >= 1"
     >
       <div v-for="(school, index) in schools" :key="index">
-        <router-link
-          :to="{ name: 'SchoolDetail', params: { slug: school.slug } }"
-        >
+        <router-link :to="{ name: 'SchoolDetail', params: { id: school.id } }">
           <school-item
             :name="school.name"
             :rating="school.average_rating"

@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('collages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
             $table->text('description');
             $table->string('thumbnail')->nullable();
             $table->timestamp('founded_at')->nullable();
