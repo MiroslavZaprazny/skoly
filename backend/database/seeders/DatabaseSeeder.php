@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Collage;
 use App\Models\Comment;
 use App\Models\Rating;
+use App\Models\RatingLike;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -55,12 +56,17 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        Rating::factory()->create([
+        $rating = Rating::factory()->create([
             'user_id' => $user->id,
             'user_ip' => '123',
             'collage_id' => $collage->id,
             'rating' => '3',
             'body' => 'Nic moc akoze'
+        ]);
+
+        RatingLike::factory()->create([
+            'user_id' => $user->id,
+            'rating_id' => $rating->id,
         ]);
 
         Comment::factory()->create([

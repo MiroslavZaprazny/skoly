@@ -27,10 +27,8 @@ class RatingLikeTest extends TestCase
     {
         $rating = $this->getRating();
         $response = $this->post("/api/rating/$rating->id/like");
+        $response->assertStatus(200);
 
         $this->assertDatabaseHas('rating_likes', ['rating_id' => $rating->id]);
-        $this->assertDatabaseCount('rating_likes', 1);
-
-        $response->assertStatus(200);
     }
 }

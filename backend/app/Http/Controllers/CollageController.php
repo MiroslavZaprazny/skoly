@@ -25,6 +25,7 @@ class CollageController extends Controller
             'ratings.user',
             'ratings.comments',
             'ratings.comments.user',
+            'ratings.likes',
         ]));
     }
 }

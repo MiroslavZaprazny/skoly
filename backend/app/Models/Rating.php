@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Rating\Like;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,6 +23,6 @@ class Rating extends Model
 
     public function likes()
     {
-        return $this->hasMany(Like::class);
+        return $this->hasMany(RatingLike::class);
     }
 }

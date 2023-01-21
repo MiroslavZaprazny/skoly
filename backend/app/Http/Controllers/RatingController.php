@@ -13,7 +13,7 @@ class RatingController extends Controller
 
     public function show(Rating $rating)
     {
-        return new ShowRatingResource($rating->load(['user', 'comments']));
+        return new ShowRatingResource($rating->load(['user', 'comments', 'likes']));
     }
 
     public function store(StoreRatingRequest $request)

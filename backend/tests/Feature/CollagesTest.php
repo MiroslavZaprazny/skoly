@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Collage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -60,13 +61,14 @@ class CollagesTest extends TestCase
                         'id',
                         'rating',
                         'body',
+                        'likes',
                         'user' => [
                             'id',
                             'name',
                             'email'
                         ]
                     ]
-                ]
+                ],
             ]
         ]);
     }

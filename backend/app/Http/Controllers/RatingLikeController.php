@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Rating;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Rating;
-use App\Models\Rating\Like;
+use App\Models\RatingLike;
 use App\Trait\Auth\AuthenticateUser;
 
-class LikeController extends Controller
+class RatingLikeController extends Controller
 {
     use AuthenticateUser;
 
@@ -17,7 +16,7 @@ class LikeController extends Controller
             return $this->authUser($rating->user_id);
         }
 
-        Like::create([
+        RatingLike::create([
             'rating_id' => $rating->id,
             'user_id' => auth()->user()->id,
         ]);

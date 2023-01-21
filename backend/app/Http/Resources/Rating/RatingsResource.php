@@ -22,7 +22,7 @@ class RatingsResource extends JsonResource
             'body' => $this->body,
             'num_of_comments' => CommentResource::collection($this->whenLoaded('comments'))->count(),
             'user' => new UserResource($this->whenLoaded('user')),
-            'comments' => new CommentResource($this->whenLoaded('comments')[0]),
+            'comment' => new CommentResource($this->whenLoaded('comments')[0]),
         ];
     }
 }

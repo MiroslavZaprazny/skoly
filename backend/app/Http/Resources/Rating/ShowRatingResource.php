@@ -4,6 +4,7 @@ namespace App\Http\Resources\Rating;
 
 use App\Http\Resources\User\UserResource;
 use App\Http\Resources\Comment\CommentResource;
+use App\Http\Resources\Likes\LikesResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ShowRatingResource extends JsonResource
@@ -21,7 +22,8 @@ class ShowRatingResource extends JsonResource
             'rating' => $this->rating,
             'body' => $this->body,
             'user' => new UserResource($this->whenLoaded('user')),
-            'comments' => CommentResource::collection($this->whenLoaded('comments'))
+            'comments' => CommentResource::collection($this->whenLoaded('comments')),
+            'likes' => LikesResource::collection($this->whenLoaded('likes'))?->count(),
         ];
     }
 }
