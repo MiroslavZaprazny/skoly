@@ -10,6 +10,26 @@ class RatingLikeController extends Controller
 {
     use AuthenticateUser;
 
+    /**
+     * Likes a rating
+     * @OA\Post (
+     *     path="/api/rating/{id}/like",
+     *     tags={"Rating"},
+     *      @OA\Response(
+     *          response=200,
+     *          description="Likes the rating",
+     *          @OA\JsonContent(
+     *          @OA\Property(
+     *              property="data", type="object",
+     *                  @OA\Property(
+     *                      property="message", type="string", example="Success"
+     *                   ),
+     *                )
+     *              )
+     *            )
+     *          )
+     *      )
+     */
     public function create(Rating $rating)
     {
         if (!$this->authUser($rating->user_id)) {
