@@ -120,10 +120,12 @@ class AuthController extends Controller
      *          response=200,
      *          description="Logged in successfully",
      *          @OA\JsonContent(
-     *              @OA\Property(property="id", type="number", example=1),
-     *              @OA\Property(property="name", type="string", example="tvojtato"),
-     *              @OA\Property(property="email", type="string", example="tvojtato@email.com"),
-     *              @OA\Property(property="age", type="number", example=16),
+     *              @OA\Property(property="data", type = "object",
+     *                  @OA\Property(property="id", type="number", example=1),
+     *                  @OA\Property(property="name", type="string", example="tvojtato"),
+     *                  @OA\Property(property="email", type="string", example="tvojtato@email.com"),
+     *                  @OA\Property(property="age", type="number", example=16),
+     *              )
      *          )
      *      ),
      *      @OA\Response(
@@ -169,10 +171,12 @@ class AuthController extends Controller
      *          response=200,
      *          description="User is logged in",
      *          @OA\JsonContent(
-     *              @OA\Property(property="id", type="number", example=1),
-     *              @OA\Property(property="name", type="string", example="tvojtato"),
-     *              @OA\Property(property="email", type="string", example="tvojtato@email.com"),
-     *              @OA\Property(property="age", type="number", example=16),
+     *              @OA\Property(property="data", type="object",
+     *                  @OA\Property(property="id", type="number", example=1),
+     *                  @OA\Property(property="name", type="string", example="tvojtato"),
+     *                  @OA\Property(property="email", type="string", example="tvojtato@email.com"),
+     *                  @OA\Property(property="age", type="number", example=16),
+     *              )
      *          )
      *      ),
      *      @OA\Response(

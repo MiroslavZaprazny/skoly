@@ -146,21 +146,26 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "id": {
-                                            "type": "number",
-                                            "example": 1
-                                        },
-                                        "name": {
-                                            "type": "string",
-                                            "example": "tvojtato"
-                                        },
-                                        "email": {
-                                            "type": "string",
-                                            "example": "tvojtato@email.com"
-                                        },
-                                        "age": {
-                                            "type": "number",
-                                            "example": 16
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "tvojtato"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "tvojtato@email.com"
+                                                },
+                                                "age": {
+                                                    "type": "number",
+                                                    "example": 16
+                                                }
+                                            },
+                                            "type": "object"
                                         }
                                     },
                                     "type": "object"
@@ -210,21 +215,26 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "id": {
-                                            "type": "number",
-                                            "example": 1
-                                        },
-                                        "name": {
-                                            "type": "string",
-                                            "example": "tvojtato"
-                                        },
-                                        "email": {
-                                            "type": "string",
-                                            "example": "tvojtato@email.com"
-                                        },
-                                        "age": {
-                                            "type": "number",
-                                            "example": 16
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "tvojtato"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "tvojtato@email.com"
+                                                },
+                                                "age": {
+                                                    "type": "number",
+                                                    "example": 16
+                                                }
+                                            },
+                                            "type": "object"
                                         }
                                     },
                                     "type": "object"
@@ -284,6 +294,210 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/collages": {
+            "post": {
+                "tags": [
+                    "Collages"
+                ],
+                "summary": "Returns a list of collages based on search",
+                "operationId": "80495c7d05133cd363f897872f3a6cbd",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "data": {
+                                        "properties": {
+                                            "search": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "search": "Fiit"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "We successfully return a list of collage",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "FIIT STU"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Toto je popis ku skole FIIT STU"
+                                                },
+                                                "founded_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "1999-01-01"
+                                                },
+                                                "average_rating": {
+                                                    "type": "integer",
+                                                    "example": 4
+                                                },
+                                                "rating_count": {
+                                                    "type": "integer",
+                                                    "example": 90
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/collage/{id}": {
+            "get": {
+                "tags": [
+                    "Collages"
+                ],
+                "summary": "Returns a single collage resource",
+                "operationId": "c30ed398fc2b6c758874e29895e0d16c",
+                "responses": {
+                    "200": {
+                        "description": "We successfully return a single resource of a collage",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "FIIT STU"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Toto je popis ku skole FIIT STU"
+                                                },
+                                                "founded_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "1999-01-01"
+                                                },
+                                                "average_rating": {
+                                                    "type": "integer",
+                                                    "example": 4
+                                                },
+                                                "rating_count": {
+                                                    "type": "integer",
+                                                    "example": 90
+                                                },
+                                                "ratings": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer",
+                                                            "example": "1"
+                                                        },
+                                                        "rating": {
+                                                            "type": "integer",
+                                                            "example": 5
+                                                        },
+                                                        "body": {
+                                                            "type": "string",
+                                                            "example": "Celkom fajn"
+                                                        },
+                                                        "likes": {
+                                                            "type": "integer",
+                                                            "example": 12
+                                                        },
+                                                        "user": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 1
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "Janko hrasko"
+                                                                },
+                                                                "email": {
+                                                                    "type": "string",
+                                                                    "example": "janko@email.com"
+                                                                },
+                                                                "age": {
+                                                                    "type": "16",
+                                                                    "example": 12
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        },
+                                                        "comments": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": "1"
+                                                                },
+                                                                "body": {
+                                                                    "type": "string",
+                                                                    "example": "Velka pravda sefko"
+                                                                },
+                                                                "user": {
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "integer",
+                                                                            "example": 1
+                                                                        },
+                                                                        "name": {
+                                                                            "type": "string",
+                                                                            "example": "Janko hrasko"
+                                                                        },
+                                                                        "email": {
+                                                                            "type": "string",
+                                                                            "example": "janko@email.com"
+                                                                        },
+                                                                        "age": {
+                                                                            "type": "16",
+                                                                            "example": 12
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
                                         }
                                     },
                                     "type": "object"
