@@ -140,16 +140,16 @@ class CollageController extends Controller
      *                      @OA\Property(
      *                          property="user", type="object",
      *                          @OA\Property(
-     *                              property="id", type="int", example=1
+     *                              property="id", type="int", example=11
      *                          ),
      *                          @OA\Property(
-     *                              property="name", type="string", example="Janko hrasko"
+     *                              property="name", type="string", example="Petko hrasko"
      *                          ),
      *                          @OA\Property(
-     *                              property="email", type="string", example="janko@email.com"
+     *                              property="email", type="string", example="petko@email.com"
      *                          ),
      *                          @OA\Property(
-     *                              property="age", type="16", example=12
+     *                              property="age", type="16", example=9
      *                          ),
      *                        )
      *                     ),

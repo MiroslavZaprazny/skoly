@@ -1,15 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "L5 OpenApi",
-        "description": "L5 Swagger OpenApi description",
-        "contact": {
-            "email": "darius@matulionis.lt"
-        },
-        "license": {
-            "name": "Apache 2.0",
-            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
-        },
+        "title": "Skoli api",
         "version": "1.0.0",
         "x-logo": {
             "url": "https://via.placeholder.com/190x90.png?text=L5-Swagger"
@@ -473,19 +465,19 @@
                                                                     "properties": {
                                                                         "id": {
                                                                             "type": "integer",
-                                                                            "example": 1
+                                                                            "example": 11
                                                                         },
                                                                         "name": {
                                                                             "type": "string",
-                                                                            "example": "Janko hrasko"
+                                                                            "example": "Petko hrasko"
                                                                         },
                                                                         "email": {
                                                                             "type": "string",
-                                                                            "example": "janko@email.com"
+                                                                            "example": "petko@email.com"
                                                                         },
                                                                         "age": {
                                                                             "type": "16",
-                                                                            "example": 12
+                                                                            "example": 9
                                                                         }
                                                                     },
                                                                     "type": "object"
@@ -495,6 +487,229 @@
                                                         }
                                                     },
                                                     "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rating/{id}": {
+            "get": {
+                "tags": [
+                    "Rating"
+                ],
+                "summary": "Returns a single rating resource",
+                "operationId": "7ab57fb2200751c94a608e7ed7d78375",
+                "responses": {
+                    "200": {
+                        "description": "We successfully return a single resource of a collage",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "rating": {
+                                                    "type": "integer",
+                                                    "example": 5
+                                                },
+                                                "body": {
+                                                    "type": "string",
+                                                    "example": "Celkom fajn"
+                                                },
+                                                "likes": {
+                                                    "type": "integer",
+                                                    "example": 12
+                                                },
+                                                "user": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer",
+                                                            "example": 1
+                                                        },
+                                                        "name": {
+                                                            "type": "string",
+                                                            "example": "Janko hrasko"
+                                                        },
+                                                        "email": {
+                                                            "type": "string",
+                                                            "example": "janko@email.com"
+                                                        },
+                                                        "age": {
+                                                            "type": "16",
+                                                            "example": 12
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "comments": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer",
+                                                            "example": "1"
+                                                        },
+                                                        "body": {
+                                                            "type": "string",
+                                                            "example": "Velka pravda sefko"
+                                                        },
+                                                        "user": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 11
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "Petko hrasko"
+                                                                },
+                                                                "email": {
+                                                                    "type": "string",
+                                                                    "example": "petko@email.com"
+                                                                },
+                                                                "age": {
+                                                                    "type": "16",
+                                                                    "example": 9
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Rating"
+                ],
+                "summary": "Deletes a rating",
+                "operationId": "5cad6480abeeed0dff91377402b5a3dc",
+                "responses": {
+                    "201": {
+                        "description": "We deleted the rating successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rating": {
+            "post": {
+                "tags": [
+                    "Rating"
+                ],
+                "summary": "Stores a rating",
+                "operationId": "d004eb638d99824695952a07127a104a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "collage_id": {
+                                        "type": "integer"
+                                    },
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "user_ip": {
+                                        "type": "string"
+                                    },
+                                    "rating": {
+                                        "type": "integer"
+                                    },
+                                    "body": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "collage_id": 1,
+                                    "user_id": 1,
+                                    "user_ip": "127.0.0.1",
+                                    "rating": 1,
+                                    "body": "pohodinda"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "We store the rating",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Success"
+                                                },
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "collage_id": {
+                                                    "type": "integer",
+                                                    "example": 12
+                                                },
+                                                "user_id": {
+                                                    "type": "integer",
+                                                    "example": 12
+                                                },
+                                                "user_ip": {
+                                                    "type": "string",
+                                                    "example": "190.0.0.5"
+                                                },
+                                                "rating": {
+                                                    "type": "integer",
+                                                    "example": 5
+                                                },
+                                                "body": {
+                                                    "type": "string",
+                                                    "example": "Celkom fajn"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2022-12-10"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2022-12-10"
                                                 }
                                             },
                                             "type": "object"
