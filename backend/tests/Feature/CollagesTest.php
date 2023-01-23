@@ -8,6 +8,22 @@ use Tests\TestCase;
 
 class CollagesTest extends TestCase
 {
+    use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+       Collage::factory()->create([
+            'name' => 'FEI STU',
+            'description' => 'Poslaním Fakulty elektrotechniky a informatiky, jednej z najstarších
+                technických fakúlt na Slovensku s bohatou vedeckou a výskumnou činnosťou, 
+                je poskytovanie kvalitného vzdelávania na báze slobodného vedeckého bádania
+                a tvorivej výskumnej práce.',
+        ]);
+    }
+
+    
     public function test_search_returns_data_in_valid_format()
     {
         $response = $this->post('/api/collages', ['search' => 'fei'], ['Content-Type' => 'json']);
@@ -36,7 +52,8 @@ class CollagesTest extends TestCase
             [
                 'data' => [
                     [
-                        'name' => 'FEI STU'
+                        'name' => 'FEI STU',
+                        //TODO: Add more stuff here?
                     ]
                 ]
             ]
