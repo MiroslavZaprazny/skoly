@@ -15,6 +15,7 @@
         v-for="review in schoolItem.ratings"
         :key="review.id"
         :review="review"
+        :slug="slug"
       ></z-review>
     </div>
   </div>
@@ -28,7 +29,7 @@ import ZReview from "../../components/schoolpage/z-review.vue";
 export default {
   components: { zReviewForm, ZReview },
   props: {
-    id: String,
+    slug: String,
   },
   data() {
     return {
@@ -37,7 +38,7 @@ export default {
   },
   methods: {
     fetchSchool() {
-      axios.get(`/api/collage/${this.id}`).then((response) => {
+      axios.get(`/api/collage/${this.slug}`).then((response) => {
         this.schoolItem = response.data.data;
         // console.log(this.schoolItem);
       });

@@ -338,6 +338,10 @@
                                                     "type": "integer",
                                                     "example": "1"
                                                 },
+                                                "slug": {
+                                                    "type": "string",
+                                                    "example": "fiit-stu"
+                                                },
                                                 "name": {
                                                     "type": "string",
                                                     "example": "FIIT STU"
@@ -390,6 +394,10 @@
                                                 "id": {
                                                     "type": "integer",
                                                     "example": "1"
+                                                },
+                                                "slug": {
+                                                    "type": "string",
+                                                    "example": "fiit-stu"
                                                 },
                                                 "name": {
                                                     "type": "string",

@@ -1,5 +1,11 @@
 <template>
-  <router-link :to="{ name: 'reviewDetail', params: { id: review.id } }" class="flex">
+  <router-link
+    :to="{
+      name: 'reviewDetail',
+      params: { slug: slug, id: review.id },
+    }"
+    class="flex"
+  >
     <p>{{ review.body }}</p>
     <p>{{ review.rating }}</p>
   </router-link>
@@ -8,11 +14,10 @@
 <script>
 export default {
   props: {
-    review: Object
-  }
-}
+    review: Object,
+    slug: String,
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

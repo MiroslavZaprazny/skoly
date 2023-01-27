@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Collage;
 
+use App\Helpers\StringHelper;
 use App\Http\Resources\Rating\RatingsResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,6 +18,7 @@ class CollagesResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'slug' => $this->slug,
             'name' => $this->name,
             'description' => $this->description,
             'founded_at' => $this->founded_at,

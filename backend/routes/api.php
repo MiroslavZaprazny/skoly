@@ -20,7 +20,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/collages', [CollageController::class, 'search']);
-Route::get('/collage/{collage}', [CollageController::class, 'show']);
+Route::get('/collage/{collage:slug}', [CollageController::class, 'show']);
 
 Route::get('/rating/{rating}', [RatingController::class, 'show']);
 Route::post('/rating', [RatingController::class, 'store']);

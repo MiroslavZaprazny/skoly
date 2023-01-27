@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+//TODO: Ak toto chceme robit len pre sk mozno cz skoly tak mozno by sme mohli premenovat tieto routes?
+
 const routes = [
   {
     path: "/",
@@ -7,7 +9,7 @@ const routes = [
     component: () => import("../pages/homepage/homepage.vue"),
   },
   {
-    path: "/collage/:id",
+    path: "/collage/:slug",
     name: 'SchoolDetail',
     component: () => import("../pages/schoolpage/schoolpage.vue"),
     props: true
@@ -23,10 +25,9 @@ const routes = [
     component: () => import("../pages/login/login.vue")
   },
   {
-    path: "/review/:id",
+    path: "/collage/:slug/review/:id",
     name: 'reviewDetail',
     component: () => import("../pages/reviews/reviewDetail.vue"),
-    props: true
   },
 ];
 

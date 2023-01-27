@@ -42,6 +42,9 @@ class CollageController extends Controller
      *                  property="id", type="int", example="1"
      *              ),
      *              @OA\Property(
+     *                  property="slug", type="string", example="fiit-stu"
+     *              ),
+     *              @OA\Property(
      *                  property="name", type="string", example="FIIT STU"
      *              ),
      *              @OA\Property(
@@ -84,6 +87,9 @@ class CollageController extends Controller
      *              property="data", type="object",
      *              @OA\Property(
      *                  property="id", type="int", example="1"
+     *              ),
+     *              @OA\Property(
+     *                  property="slug", type="string", example="fiit-stu"
      *              ),
      *              @OA\Property(
      *                  property="name", type="string", example="FIIT STU"
