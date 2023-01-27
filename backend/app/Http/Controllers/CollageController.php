@@ -77,7 +77,7 @@ class CollageController extends Controller
     /**
      * Returns a single collage resource 
      * @OA\Get (
-     *     path="/api/collage/{id}",
+     *     path="/api/collage/{slug}",
      *     tags={"Collages"},
      *      @OA\Response(
      *          response=200,

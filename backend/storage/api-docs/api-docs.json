@@ -375,13 +375,13 @@
                 }
             }
         },
-        "/api/collage/{id}": {
+        "/api/collage/{slug}": {
             "get": {
                 "tags": [
                     "Collages"
                 ],
                 "summary": "Returns a single collage resource",
-                "operationId": "c30ed398fc2b6c758874e29895e0d16c",
+                "operationId": "07dd082f5a031b4bd84ef551556c9b23",
                 "responses": {
                     "200": {
                         "description": "We successfully return a single resource of a collage",
