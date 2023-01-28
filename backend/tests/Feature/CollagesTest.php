@@ -16,6 +16,7 @@ class CollagesTest extends TestCase
 
         Collage::factory()->create([
             'name' => 'FEI STU',
+            'slug' => 'fei-stu',
             'description' => 'Poslaním Fakulty elektrotechniky a informatiky, jednej z najstarších
                 technických fakúlt na Slovensku s bohatou vedeckou a výskumnou činnosťou, 
                 je poskytovanie kvalitného vzdelávania na báze slobodného vedeckého bádania
@@ -31,6 +32,7 @@ class CollagesTest extends TestCase
             'data' => [
                 '*' => [
                     'id',
+                    'slug',
                     'name',
                     'description',
                     'founded_at',
@@ -52,6 +54,7 @@ class CollagesTest extends TestCase
             [
                 'data' => [
                     [
+                        'slug' => 'fei-stu',
                         'name' => 'FEI STU',
                         //TODO: Add more stuff here?
                     ]
@@ -62,12 +65,13 @@ class CollagesTest extends TestCase
 
     public function test_show_method_returns_data_in_valid_format()
     {
-        $response = $this->get('/api/collage/1');
+        $response = $this->get('/api/collage/fei-stu');
 
         $response->assertStatus(200);
         $response->assertJsonStructure([
             'data' => [
                 'id',
+                'slug',
                 'name',
                 'description',
                 'founded_at',
@@ -91,13 +95,14 @@ class CollagesTest extends TestCase
     }
     public function test_show_method_returns_correct_data()
     {
-        $response = $this->get('/api/collage/1');
+        $response = $this->get('/api/collage/fei-stu');
 
         $response->assertStatus(200);
         $response->assertJson(
             [
                 'data' => [
                     'id' => 1,
+                    'slug' => 'fei-stu',
                     'name' => 'FEI STU',
                     'average_rating' => 3,
                     'rating_count' => 1,
