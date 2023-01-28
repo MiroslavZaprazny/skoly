@@ -43,4 +43,35 @@ class RatingLikeController extends Controller
 
         return response()->json(['message' => 'Success']);
     }
+
+    /**
+     * Unlikes a rating
+     * @OA\Delete (
+     *     path="/api/rating/{id}/unlike",
+     *     tags={"Rating"},
+     *      @OA\Response(
+     *          response=200,
+     *          description="Unlikes the rating",
+     *          @OA\JsonContent(
+     *          @OA\Property(
+     *              property="data", type="object",
+     *                  @OA\Property(
+     *                      property="message", type="string", example="Success"
+     *                   ),
+     *                )
+     *              )
+     *            )
+     *          )
+     *      )
+     */
+    public function destroy(Rating $rating)
+    {
+        if (!$this->authUser($rating->user_id)) {
+            return $this->authUser($rating->user_id);
+        }
+
+        RatingLike::where('rating_id', $rating->id)->where('user_id', $rating->user_id)->delete();
+
+        return response()->json(['message' => 'Success']);
+    }
 }

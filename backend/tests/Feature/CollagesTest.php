@@ -14,7 +14,7 @@ class CollagesTest extends TestCase
     {
         parent::setUp();
 
-       Collage::factory()->create([
+        Collage::factory()->create([
             'name' => 'FEI STU',
             'description' => 'Poslaním Fakulty elektrotechniky a informatiky, jednej z najstarších
                 technických fakúlt na Slovensku s bohatou vedeckou a výskumnou činnosťou, 
@@ -23,7 +23,7 @@ class CollagesTest extends TestCase
         ]);
     }
 
-    
+
     public function test_search_returns_data_in_valid_format()
     {
         $response = $this->post('/api/collages', ['search' => 'fei'], ['Content-Type' => 'json']);

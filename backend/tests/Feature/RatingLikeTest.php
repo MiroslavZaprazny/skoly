@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\Rating;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class RatingLikeTest extends TestCase
@@ -23,12 +22,26 @@ class RatingLikeTest extends TestCase
         ]);
     }
 
-    public function test_liking_a_review_actually_works()
+    public function test_liking_a_review()
     {
         $rating = $this->getRating();
         $response = $this->post("/api/rating/$rating->id/like");
         $response->assertStatus(200);
 
         $this->assertDatabaseHas('rating_likes', ['rating_id' => $rating->id]);
+    }
+
+    public function test_unlike_a_review()
+    {
+        $rating = $this->getRating();
+
+        //like a review
+        $response = $this->post("api/rating/$rating->id/like");
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('rating_likes', ['rating_id' => $rating->id]);
+
+        $response = $this->delete("/api/rating/$rating->id/unlike");
+        $response->assertStatus(200);
+        $this->assertDatabaseMissing('rating_likes', ['rating_id' => $rating->id]);
     }
 }

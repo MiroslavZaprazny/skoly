@@ -763,6 +763,38 @@
                 }
             }
         },
+        "/api/rating/{id}/unlike": {
+            "delete": {
+                "tags": [
+                    "Rating"
+                ],
+                "summary": "Unlikes a rating",
+                "operationId": "d78cad04d97a71c8cb24827323ffd9f1",
+                "responses": {
+                    "200": {
+                        "description": "Unlikes the rating",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Success"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/profile/{id}": {
             "get": {
                 "tags": [
