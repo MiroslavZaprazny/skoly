@@ -10,3 +10,5 @@ docker compose up -d
 ```bash
 http://localhost:9000/api/documentation
 ```
+# TODO:
+Make separate repos for each of the application
